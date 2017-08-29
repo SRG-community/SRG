@@ -1,0 +1,23 @@
+!.mvn/wrapper/maven-wrapper.jar
+
+target/
+
+# STS
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+# IntelliJ IDEA
+.idea
+*.iws
+*.iml
+*.ipr
+
+# Editor directories and files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

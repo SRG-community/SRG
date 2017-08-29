@@ -1,0 +1,36 @@
+server:
+  port: ${PORT:9999}
+spring:
+  datasource:
+    url: jdbc:h2:~/social-test
+  social:
+    twitter:
+      appId: 222
+      appSecret: lll
+    auto-connection-views: false
+    google:
+      app-id: ${GOOGLE_APP_ID}
+      app-secret: ${GOOGLE_APP_SECRET}
+      scope: profile email
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: true
+        web-allow-others: true
+  data:
+    rest:
+      base-path: /api
+  resources:
+    staticLocations: classpath:web/
+security:
+  basic:
+    enabled: false
+logging:
+  level:
+    org:
+      h2: INFO
+hibernate:
+  hbm2ddl:
+    auto: create-drop

@@ -1,0 +1,25 @@
+sudo: enabled
+
+services:
+  - docker
+
+language: java
+jdk: oraclejdk8
+
+cache:
+  directories:
+    - $HOME/.m2/repository
+    - ./frontend/player/node
+    - ./frontend/player/node_modules
+
+install: true
+
+script: ./mvnw clean package -B
+
+after_success:
+  - wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+  - heroku plugins:install heroku-container-registry
+  - cd ./backend/player
+  - docker login --username=$HEROKU_USER_NAME --password=$HEROKU_API_KEY registry.heroku.com
+  - heroku container:push web --app $HEROKU_APP_NAME
+
