@@ -1,10 +1,28 @@
 <template>
   <div class="row">
     <div class="col-xs-12">
-      <div class="col-sm-6 col-sm-offset-3">
-        <h1>Hi, {{ name }}! Share your games and Earn!!!</h1>
-        <button class="btn btn-warning"><a href="tg://msg?text=http://ruzzland.asuscomm.com ПОИГРАЙ КА">Share via Telegram!</a></button>
-        <button class="btn btn-warning"><a href="whatsapp://send?text=http://ruzzland.asuscomm.com ПОИГРАЙ КА">Share via Whatsapp!</a></button>
+      <div class="col-sm-8 col-sm-offset-2">
+        <h2>Hi, {{ name }}! Share your games and Earn!!!</h2>
+        <carousel>
+          <slider>
+            <div class="col-sm-2 col-sm-offset-4">
+              <img src="/static/game_dn.png" class="radius">
+            </div>
+            <div class="carousel-caption">
+              TODO
+            </div>
+          </slider>
+          <slider>
+            <img src="/static/game_swy.jpg" class="radius">
+          </slider>
+          <slider>
+            <img src="/static/game_cq.jpg" class="radius">
+          </slider>
+        </carousel>
+        <button class="btn btn-warning"><a href="tg://msg?text=http://ruzzland.asuscomm.com ПОИГРАЙ КА">Share via Telegram!</a>
+        </button>
+        <button class="btn btn-warning"><a href="whatsapp://send?text=http://ruzzland.asuscomm.com ПОИГРАЙ КА">Share via Whatsapp!</a>
+        </button>
         <div class="quote-area" v-if="quote">
           <h2>
             <blockquote>{{ quote }}</blockquote>
@@ -60,7 +78,8 @@
     </div>
     <div class="col-xs-12">
       <div class="panel panel-default">
-        <div class="panel-heading"><h1 class="panel-title"><a href="whatsapp://send?text=http://ruzzland.asuscomm.com  ПОИГРАЙ КА">Share a game!</a>
+        <div class="panel-heading"><h1 class="panel-title"><a
+          href="whatsapp://send?text=http://ruzzland.asuscomm.com  ПОИГРАЙ КА">Share a game!</a>
           <a href="tg://msg?text=http://ruzzland.asuscomm.com ПОИГРАЙ КА">Share a game2!</a></h1></div>
         <div class="panel-body table-responsive">
           <table __gwtcellbasedwidgetimpldispatchingfocus="true"
@@ -115,6 +134,8 @@
 
 <script>
   import auth from '../auth'
+  import {carousel} from 'vue-strap'
+  import {slider} from 'vue-strap'
 
   export default {
     data() {
@@ -134,6 +155,10 @@
           })
           .error((err) => console.log(err))
       }
+    },
+    components: {
+      carousel,
+      slider
     },
     route: {
       // Check the users auth status before

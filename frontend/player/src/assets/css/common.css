@@ -1,3 +1,9 @@
+.radius {
+  transform: scale(.95);
+  opacity: .85;
+  transition: transform .5s ease-in;
+}
+
 .cska {
 	background: url("../cska.jpg");
 	background-repeat: no-repeat;
