@@ -10,7 +10,7 @@ import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.WebRequest;
-import ru.srg.security.AuthUtil;
+import ru.srg.security.SocialAuthUtil;
 
 @Controller
 public class SignupController {
@@ -34,7 +34,7 @@ public class SignupController {
         logger.info("signup connection: {}", connection);
 
         if (connection != null) {
-            AuthUtil.authenticate(connection);
+            SocialAuthUtil.authenticate(connection);
             signInUtils.doPostSignUp(connection.getDisplayName(), request);
         }
         return "redirect:/";

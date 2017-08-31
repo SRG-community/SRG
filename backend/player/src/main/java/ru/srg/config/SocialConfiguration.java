@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.social.connect.web.SignInAdapter;
-import ru.srg.security.AuthUtil;
+import ru.srg.security.SocialAuthUtil;
 
 @Configuration
 public class SocialConfiguration {
@@ -18,7 +18,7 @@ public class SocialConfiguration {
 
             logger.info("UserId: {}, connection: {}, request: {}", userId, connection, request);
 
-            AuthUtil.authenticate(connection);
+            SocialAuthUtil.authenticate(connection);
             return null;
         };
     }

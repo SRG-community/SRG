@@ -7,9 +7,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.UserProfile;
 
-public class AuthUtil {
+public class SocialAuthUtil {
 
-    private static final Logger logger = LoggerFactory.getLogger(AuthUtil.class);
+    private static final Logger logger = LoggerFactory.getLogger(SocialAuthUtil.class);
 
     public static void authenticate(Connection<?> connection) {
         UserProfile userProfile = connection.fetchUserProfile();

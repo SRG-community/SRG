@@ -39,7 +39,8 @@ public class SRGGoogleSocialConfig extends SocialConfigurerAdapter {
         // connectionFactoryConfigurer.addConnectionFactory(new GoogleConnectionFactory(properties.getAppId(), properties.getAppSecret()));
         GoogleConnectionFactory googleConnectionFactory = new GoogleConnectionFactory(environment.getProperty("spring.social.google.app-id"), environment.getProperty("spring.social.google.app-secret"));
         //googleConnectionFactory.setScope("https://www.googleapis.com/auth/plus.login");
-        googleConnectionFactory.setScope("email profile");
+        //googleConnectionFactory.setScope("email profile");
+        googleConnectionFactory.setScope(environment.getProperty("spring.social.google.scope"));
         connectionFactoryConfigurer.addConnectionFactory(googleConnectionFactory);
     }
 
