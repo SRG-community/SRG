@@ -6,7 +6,6 @@ import router from './router'
 import './assets/css/bootstrap.min.css'
 import './assets/css/font-awesome-4.5.0.min.cache.css'
 import './assets/css/common.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(VueResource)
 
