@@ -1,11 +1,11 @@
-package ru.srg.config;
+package ru.srg.security.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.social.connect.web.SignInAdapter;
-import ru.srg.security.SocialAuthUtil;
+import ru.srg.security.util.SocialAuthUtil;
 
 @Configuration
 public class SocialConfiguration {

@@ -1,4 +1,4 @@
-package ru.srg.api;
+package ru.srg.security.api;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,7 @@ import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.WebRequest;
-import ru.srg.security.SocialAuthUtil;
+import ru.srg.security.util.SocialAuthUtil;
 
 @Controller
 public class SignupController {

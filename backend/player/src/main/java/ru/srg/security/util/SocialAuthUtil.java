@@ -1,4 +1,4 @@
-package ru.srg.security;
+package ru.srg.security.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,18 +13,8 @@ public class SocialAuthUtil {
 
     public static void authenticate(Connection<?> connection) {
         UserProfile userProfile = connection.fetchUserProfile();
-        String username = userProfile.getFirstName();
-        if (username == null || "".equals(username)) {
-            username = userProfile.getLastName();
-        } else {
-            username = username + " " + userProfile.getLastName();
-        }
-        if (username == null || "".equals(username)) {
-            username = userProfile.getUsername();
-        }
-        // TODO
-
-        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(username, null, null);
+        String email = userProfile.getEmail();
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(email, null, null);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         logger.info("User {} {} connected.", userProfile.getFirstName(), userProfile.getLastName());
     }

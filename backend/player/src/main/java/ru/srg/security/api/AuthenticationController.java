@@ -1,4 +1,4 @@
-package ru.srg.api;
+package ru.srg.security.api;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,9 +7,10 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import ru.srg.security.User;
+import ru.srg.domain.User;
 
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.security.Principal;
 
 @RestController
@@ -18,8 +19,8 @@ public class AuthenticationController {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+//    @Autowired
+//    private AuthenticationManager authenticationManager;
 
     @RequestMapping(method = RequestMethod.GET)
     public User login(Principal principal) {
@@ -27,7 +28,11 @@ public class AuthenticationController {
         logger.info("Principal: {}", principal);
 
         String name = principal == null ? null : principal.getName();
-        return new User(name);
+
+        // TODO Get user from store (session or db?)
+        User user = new User(name);
+        user.setBalance(BigDecimal.valueOf(100));
+        return user;
     }
 
     @RequestMapping(method = RequestMethod.DELETE)

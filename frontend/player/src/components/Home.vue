@@ -17,7 +17,7 @@
     data() {
       return {
         quote: '',
-        name: auth.user.name
+        name: auth.user.email
       }
     },
     methods: {

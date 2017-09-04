@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="col-sm-8 col-sm-offset-2">
-        <h2>Hi, {{ name }}! Share your games and Earn!!!</h2>
+        <h2>Hi, {{ name }}! Share your games and Earn!!! Your balance is {{ balance }} coins</h2>
         <carousel>
           <slider>
             <div class="col-sm-2 col-sm-offset-4">
@@ -141,7 +141,8 @@
     data() {
       return {
         quote: '',
-        name: auth.user.name
+        name: auth.user.email,
+        balance: auth.user.balance
       }
     },
     methods: {
@@ -164,7 +165,7 @@
       // Check the users auth status before
       // allowing navigation to the route
       canActivate() {
-        return auth.user.name != null
+        return auth.user.email != null
       }
     }
   }

@@ -1,4 +1,4 @@
-package ru.srg.config;
+package ru.srg.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +23,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableSocial
-public class SRGGoogleSocialConfig extends SocialConfigurerAdapter {
+public class GoogleSocialConfig extends SocialConfigurerAdapter {
 
     @Autowired
     private DataSource dataSource;

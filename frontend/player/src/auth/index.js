@@ -8,40 +8,46 @@ const SIGNUP_URL = API_URL + 'users/'
 
 export default {
 
-    user: {
-        name: null
-    },
+  user: {
+    email: null,
+    balance: 0
+  },
 
-    login(context, creds, redirect) {
-        context.$http.post(LOGIN_URL, creds).then((user) => {
+  login(context, creds, redirect) {
+    context.$http.post(LOGIN_URL, creds).then((user) => {
 
-            this.user.name = user.name
-            if (redirect) {
-                router.go(redirect)
-            }
-        }, (err) => {
-            context.error = err
-        })
-    },
+      this.user.email = user.email
+      this.user.balance = user.balance
+      if (redirect) {
+        router.go(redirect)
+      }
+    }, (err) => {
+      context.error = err
+    })
+  },
 
-    signup(context, creds, redirect) {
-        context.$http.post(SIGNUP_URL, creds).then((user) => {
-            this.user.name = user.name
-            if (redirect) {
-                router.go(redirect)
-            }
-        }, (err) => {
-            context.error = err
-        })
-    },
+  signup(context, creds, redirect) {
+    context.$http.post(SIGNUP_URL, creds).then((user) => {
+      this.user.email = user.email
+      this.user.balance = user.balance
+      if (redirect) {
+        router.go(redirect)
+      }
+    }, (err) => {
+      context.error = err
+    })
+  },
 
-    logout(context) {
-        context.$http.delete("/api/session", {credentials: 'same-origin'}).then(response => this.user.name = null)
-    },
+  logout(context) {
+    context.$http.delete("/api/session", {credentials: 'same-origin'}).then(response => this.user.email = null)
+  },
 
-    checkAuth() {
-        Vue.http.get('/api/session', {credentials: 'same-origin'})
-            .then(response => response.json())
-            .then(user => this.user.name = user.name);
-    }
+  checkAuth() {
+    Vue.http.get('/api/session', {credentials: 'same-origin'})
+      .then(response => response.json())
+      .then(user => {
+        this.user.email = user.email
+        this.user.balance = user.balance
+      });
+  }
 }

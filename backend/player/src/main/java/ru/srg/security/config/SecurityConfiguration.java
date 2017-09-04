@@ -1,4 +1,4 @@
-package ru.srg.config;
+package ru.srg.security.config;
 
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
