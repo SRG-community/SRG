@@ -3,25 +3,9 @@
     <div class="col-xs-12">
       <div class="col-sm-8 col-sm-offset-2">
         <h2>Hi, {{ name }}! Share your games and Earn!!! Your balance is {{ balance }} coins</h2>
-        <carousel>
-          <slider>
-            <div class="col-sm-2 col-sm-offset-4">
-              <img src="/static/game_dn.png" class="radius">
-            </div>
-            <div class="carousel-caption">
-              TODO
-            </div>
-          </slider>
-          <slider>
-            <img src="/static/game_swy.jpg" class="radius">
-          </slider>
-          <slider>
-            <img src="/static/game_cq.jpg" class="radius">
-          </slider>
-        </carousel>
-        <button class="btn btn-warning"><a href="tg://msg?text=http://ruzzland.asuscomm.com ПОИГРАЙ КА">Share via Telegram!</a>
+        <button class="btn btn-warning"><a href="tg://msg?text=https://srgp.herokuapp.com?r=777 ПОИГРАЙ КА">Share via Telegram!</a>
         </button>
-        <button class="btn btn-warning"><a href="whatsapp://send?text=http://ruzzland.asuscomm.com ПОИГРАЙ КА">Share via Whatsapp!</a>
+        <button class="btn btn-warning"><a href="whatsapp://send?text=https://srgp.herokuapp.com?r=777 ПОИГРАЙ КА">Share via Whatsapp!</a>
         </button>
         <div class="quote-area" v-if="quote">
           <h2>
@@ -29,58 +13,12 @@
           </h2>
         </div>
       </div>
-      <div class="modal fade" style="z-index: 1050;">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">×</button>
-              <h4 class="modal-title">Подтверждение реестра</h4></div>
-            <div class="modal-body">
-              <form target="GWTBootstrap3_AbstractForm_secured_1" role="form"
-                    class="form-horizontal">
-                <fieldset>
-                  <div class="form-group"><label class="control-label col-lg-4"
-                                                 for="formDate">Дата</label>
-                    <div class="col-lg-8"><p class="form-control-static"
-                                             id="formDate"></p></div>
-                  </div>
-                  <div class="form-group"><label class="control-label col-lg-4"
-                                                 for="formAmount">Сумма</label>
-                    <div class="col-lg-8"><input type="text" class="form-control"
-                                                 id="formAmount" disabled=""></div>
-                  </div>
-                  <div class="form-group"><label class="control-label col-lg-4"
-                                                 for="formStatus">Статус</label>
-                    <div class="col-lg-8"><input type="text" class="form-control"
-                                                 id="formStatus" disabled=""></div>
-                  </div>
-                  <div class="form-group"><label class="control-label col-lg-4">Согласовать?</label>
-                    <div class="col-lg-8"><label class="radio-inline"><input
-                      type="radio" name="radio1" value="value1"
-                      tabindex="0"><span>Да</span></label><label
-                      class="radio-inline"><input type="radio" name="radio1"
-                                                  value="value2" tabindex="0"><span>Нет</span></label>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-lg-offset-4 col-lg-8">
-                      <button type="button" class="btn pull-right btn-primary"
-                              data-dismiss="modal">Далее
-                      </button>
-                    </div>
-                  </div>
-                </fieldset>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
     <div class="col-xs-12">
       <div class="panel panel-default">
         <div class="panel-heading"><h1 class="panel-title"><a
-          href="whatsapp://send?text=http://ruzzland.asuscomm.com  ПОИГРАЙ КА">Share a game!</a>
-          <a href="tg://msg?text=http://ruzzland.asuscomm.com ПОИГРАЙ КА">Share a game2!</a></h1></div>
+          href="whatsapp://send?text=https://srgp.herokuapp.com ПОИГРАЙ КА">Share a game!</a>
+          <a href="tg://msg?text=https://srgp.herokuapp.com ПОИГРАЙ КА">Share a game2!</a></h1></div>
         <div class="panel-body table-responsive">
           <table __gwtcellbasedwidgetimpldispatchingfocus="true"
                  __gwtcellbasedwidgetimpldispatchingblur="true"
@@ -134,8 +72,6 @@
 
 <script>
   import auth from '../auth'
-  import {carousel} from 'vue-strap'
-  import {slider} from 'vue-strap'
 
   export default {
     data() {
@@ -156,10 +92,6 @@
           })
           .error((err) => console.log(err))
       }
-    },
-    components: {
-      carousel,
-      slider
     },
     route: {
       // Check the users auth status before

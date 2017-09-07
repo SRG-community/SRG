@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group">
                   <div class="col-lg-offset-2 col-lg-5">
-                    <form action="/signin/google" method="post">
+                    <form action="/signin/google?ppp=zzz" method="post">
                       <button class="btn pull-left btn-primary fa fa-google">
                         Sign In with Google
                       </button>

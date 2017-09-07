@@ -1,17 +1,32 @@
 <template>
-  <div class="row" style="height: 445px;">
-    <div v-if="name != null" class="col-lg-6 col-lg-offset-3">
-      <h1>Hi, {{ name }}! Share your games and Earn!!!</h1>
-      <button class="btn btn-warning"><a href="tg://msg?text=http://ruzzland.asuscomm.com ПОИГРАЙ КА">Share via Telegram!</a>
-      </button>
-      <button class="btn btn-warning"><a href="whatsapp://send?text=http://ruzzland.asuscomm.com ПОИГРАЙ КА">Share via Whatsapp!</a>
-      </button>
-    </div>
-  </div>
+<div>
+  <h2>Let's Play & Earn!</h2>
+  <carousel>
+    <slider>
+      <div class="col-sm-2 col-sm-offset-4">
+        <img src="/static/game_dn.png" class="radius">
+      </div>
+      <div class="carousel-caption">
+      </div>
+    </slider>
+    <slider>
+      <div class="col-sm-2 col-sm-offset-4">
+        <img src="/static/game_swy.png" class="radius">
+      </div>
+    </slider>
+    <slider>
+      <div class="col-sm-2 col-sm-offset-4">
+        <img src="/static/game_cq.png" class="radius">
+      </div>
+    </slider>
+  </carousel>
+</div>
 </template>
 
 <script>
   import auth from '../auth'
+  import {carousel} from 'vue-strap'
+  import {slider} from 'vue-strap'
 
   export default {
     data() {
@@ -28,6 +43,10 @@
           })
           .error((err) => console.log(err))
       }
+    },
+    components: {
+      carousel,
+      slider
     }
   }
 </script>
