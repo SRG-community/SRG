@@ -71,7 +71,7 @@
 </template>
 
 <script>
-  import auth from '../auth'
+  import auth from '@/services/auth'
 
   export default {
     data() {
@@ -97,7 +97,7 @@
       // Check the users auth status before
       // allowing navigation to the route
       canActivate() {
-        return auth.user.email != null
+        return auth.user.email !== null
       }
     }
   }

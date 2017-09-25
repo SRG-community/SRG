@@ -7,13 +7,13 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li slot="right">
-          <router-link v-if="user.email == null" to="/login">Login</router-link>
+          <router-link v-if="user.email === null" to="/login">Login</router-link>
         </li>
         <li slot="right">
-          <router-link v-if="user.email == null" to="/signup">Sign Up</router-link>
+          <router-link v-if="user.email === null" to="/signup">Sign Up</router-link>
         </li>
         <li slot="right">
-          <router-link v-if="user.email != null" to="/mygames">My Games</router-link>
+          <router-link v-if="user.email !== null" to="/mygames">My Games</router-link>
         </li>
       </ul>
     </navbar>
@@ -29,19 +29,18 @@
 </template>
 
 <script>
-  import auth from '../auth'
   import {navbar} from 'vue-strap'
   import {dropdown} from 'vue-strap'
 
   export default {
-    data() {
-      return {
-        user: auth.user
+    computed: {
+      user() {
+        return this.$store.getters.getUser
       }
     },
     methods: {
       logout() {
-        auth.logout(this)
+        this.$store.dispatch('logout', this);
       }
     },
     components: {

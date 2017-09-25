@@ -34,7 +34,7 @@
 </template>
 
 <script>
-  import auth from '../auth'
+  import auth from '@/services/auth'
 
   export default {
     data() {
@@ -54,7 +54,7 @@
         var credentials = {
           username: this.credentials.username,
           password: this.credentials.password
-        }
+        };
         // We need to pass the component's this context
         // to properly make use of http in the auth service
         auth.signup(this, credentials, 'mygames')
