@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="col-sm-8 col-sm-offset-2">
-        <h2>Hi, {{ name }}! Share your games and Earn!!! Your balance is {{ balance }} coins</h2>
+        <h2>Hi, {{ currentUser.email }}!
+          Share your games and Earn!!! Your balance is {{ currentUser.balance }} coins</h2>
         <button class="btn btn-warning"><a href="tg://msg?text=https://srgp.herokuapp.com?r=777 ПОИГРАЙ КА">Share via Telegram!</a>
         </button>
         <button class="btn btn-warning"><a href="whatsapp://send?text=https://srgp.herokuapp.com?r=777 ПОИГРАЙ КА">Share via Whatsapp!</a>
@@ -71,16 +72,17 @@
 </template>
 
 <script>
-  import auth from '@/services/auth'
+  import {mapGetters} from 'vuex'
 
   export default {
     data() {
       return {
-        quote: '',
-        name: auth.user.email,
-        balance: auth.user.balance
+        quote: ''
       }
     },
+    computed: mapGetters([
+      'currentUser'
+    ]),
     methods: {
       getQuote() {
         this.$http
@@ -88,7 +90,7 @@
             this.quote = data;
           }, {
             // Attach the JWT header
-            headers: auth.getAuthHeader()
+            headers: ''
           })
           .error((err) => console.log(err))
       }
@@ -97,7 +99,7 @@
       // Check the users auth status before
       // allowing navigation to the route
       canActivate() {
-        return auth.user.email !== null
+        return this.currentUser.email !== null
       }
     }
   }

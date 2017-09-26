@@ -2,8 +2,8 @@
   <div class="col-sm-4 col-sm-offset-4">
     <h2>Log In</h2>
     <p>Sign up.</p>
-    <div class="alert alert-danger" v-if="error">
-      <p>{{ error }}</p>
+    <div class="alert alert-danger" v-if="getError">
+      <p>{{ getError }}</p>
     </div>
     <div class="form-group">
       <input
@@ -29,12 +29,12 @@
         v-model="password2"
       >
     </div>
-    <button class="btn btn-primary" @click="submit()">Access</button>
+    <button class="btn btn-primary" @click="submit">Access</button>
   </div>
 </template>
 
 <script>
-  import auth from '@/services/auth'
+  import {mapGetters} from 'vuex'
 
   export default {
     data() {
@@ -45,19 +45,21 @@
           username: '',
           password: ''
         },
-        password2: '',
-        error: ''
+        password2: ''
       }
     },
+    computed: mapGetters([
+      'getError'
+    ]),
     methods: {
       submit() {
-        var credentials = {
+        let credentials = {
           username: this.credentials.username,
           password: this.credentials.password
         };
         // We need to pass the component's this context
         // to properly make use of http in the auth service
-        auth.signup(this, credentials, 'mygames')
+        this.$store.signup(this, credentials, 'mygames')
       }
     }
   }

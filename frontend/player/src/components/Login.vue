@@ -40,7 +40,7 @@
                     </form>
                   </div>
                   <div class="col-lg-5">
-                    <button type="button" class="btn pull-right btn-primary" @click="submit()">
+                    <button type="button" class="btn pull-right btn-primary" @click="submit">
                       Sign In
                     </button>
                   </div>
@@ -55,8 +55,6 @@
 </template>
 
 <script>
-  import auth from '@/services/auth'
-
   export default {
     data() {
       return {
@@ -77,7 +75,7 @@
         };
         // We need to pass the component's this context
         // to properly make use of http in the auth service
-        auth.login(this, credentials, 'mygames')
+        this.$store.login(this, credentials, 'mygames')
       }
     }
   }

@@ -24,8 +24,8 @@
 </template>
 
 <script>
-  import {carousel} from 'vue-strap'
-  import {slider} from 'vue-strap'
+  import {mapGetters} from 'vuex'
+  import {carousel, slider} from 'vue-strap'
 
   export default {
     data() {
@@ -33,11 +33,9 @@
         quote: ''
       }
     },
-    computed: {
-      name() {
-        return this.$store.getters.getUser.email
-      }
-    },
+    computed: mapGetters([
+      'currentUser'
+    ]),
     methods: {
       getQuote() {
         this.$http
