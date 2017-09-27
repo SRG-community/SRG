@@ -32,7 +32,10 @@ export const signup = function ({commit}, creds, redirect) {
 
 export const logout = function ({commit}, context) {
   return authService.logout(context)
-    .then((response) => commit(LOGOUT_SUCCESS))
+    .then(() => {
+      commit(LOGOUT_SUCCESS);
+      router.push('SRG')
+    })
     .catch((error) => commit(LOGIN_OUT_FAIL, error))
 };
 

@@ -75,7 +75,7 @@
         };
         // We need to pass the component's this context
         // to properly make use of http in the auth service
-        this.$store.dispatch('login', this, credentials, 'mygames')
+        this.$store.dispatch('login', this, credentials, 'MyGames')
       }
     }
   }
