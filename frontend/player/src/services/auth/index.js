@@ -1,7 +1,6 @@
 import Vue from 'vue'
 
 import {LOGIN_URL, SIGNUP_URL, API_SESSION_URL} from './api-urls'
-import {LOGIN_SUCCESS} from '@/store/mutations/mutation-types'
 
 export default {
   login(context, creds) {
