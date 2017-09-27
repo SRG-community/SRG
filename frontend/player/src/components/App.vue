@@ -3,7 +3,9 @@
     <navbar placement="top" type="default">
       <a slot="brand" href="/" title="SRG" class="navbar-brand logo" style="width: 145px;"></a>
       <form slot="right" v-if="currentUser.email !== null" class="navbar-form navbar-right">
-        <button type="button" class="btn btn-primary" router-link="'login'" @click="logout">Logout</button>
+        <span>Hi, {{ currentUser.email }}! Your balance is {{ currentUser.balance
+          }} coins </span>
+        <button type="button" class="btn btn-primary" @click="logout">Logout</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li slot="right">
