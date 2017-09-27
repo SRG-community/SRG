@@ -4,23 +4,15 @@ import {LOGIN_URL, SIGNUP_URL, API_SESSION_URL} from './api-urls'
 
 export default {
   login(context, creds) {
-    context.$http.post(LOGIN_URL, creds)
-      .then((response) => Promise.resolve(response))
-      .catch((error) => Promise.reject(error));
+    return context.$http.post(LOGIN_URL, creds)
   },
   signup(context, creds) {
-    context.$http.post(SIGNUP_URL, creds)
-      .then((response) => Promise.resolve(response))
-      .catch((error) => Promise.reject(error));
+    return context.$http.post(SIGNUP_URL, creds)
   },
   logout(context) {
-    context.$http.delete(API_SESSION_URL, {credentials: 'same-origin'})
-      .then((response) => Promise.resolve(response))
-      .catch((error) => Promise.reject(error));
+    return context.$http.delete(API_SESSION_URL, {credentials: 'same-origin'})
   },
   checkAuth() {
-    Vue.http.get(API_SESSION_URL, {credentials: 'same-origin'})
-      .then((response) => Promise.resolve(response))
-      .catch((error) => Promise.reject(error));
+    return Vue.http.get(API_SESSION_URL, {credentials: 'same-origin'})
   }
 }
