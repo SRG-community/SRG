@@ -2,8 +2,8 @@
   <div class="col-sm-4 col-sm-offset-4">
     <h2>Log In</h2>
     <p>Sign up.</p>
-    <div class="alert alert-danger" v-if="getError">
-      <p>{{ getError }}</p>
+    <div class="alert alert-danger" v-if="getSignError">
+      <p>{{ getSignError }}</p>
     </div>
     <div class="form-group">
       <input
@@ -49,7 +49,7 @@
       }
     },
     computed: mapGetters([
-      'getError'
+      'getSignError'
     ]),
     methods: {
       submit() {

@@ -4,5 +4,6 @@ export default {
     email: null,
     balance: 0
   },
-  error: null
+  authError: null,
+  signError: null
 };

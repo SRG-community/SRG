@@ -1,4 +1,4 @@
-import {SET, LOGIN_SUCCESS, LOGOUT_SUCCESS, LOGIN_OUT_FAIL} from './mutation-types'
+import {SET, LOGIN_SUCCESS, LOGOUT_SUCCESS, LOGIN_OUT_FAIL, SIGNUP_FAIL} from './mutation-types'
 
 export default {
   [SET](state, {type, items}) {
@@ -13,6 +13,9 @@ export default {
     state.user.balance = 0
   },
   [LOGIN_OUT_FAIL](state, error) {
-    state.error = error
+    state.authError = error
+  },
+  [SIGNUP_FAIL](state, error) {
+    state.signError = error
   }
 }

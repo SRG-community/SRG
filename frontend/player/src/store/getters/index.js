@@ -1,4 +1,5 @@
 export default {
   currentUser: state => state.user,
-  getError: state => state.error
+  getAuthError: state => state.authError,
+  getSignError: state => state.signError
 }
