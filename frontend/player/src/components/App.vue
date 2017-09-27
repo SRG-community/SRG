@@ -44,7 +44,7 @@
       dropdown
     },
     created() {
-      this.$store.checkAuth();
+      this.$store.dispatch('checkAuth');
     }
   }
 </script>

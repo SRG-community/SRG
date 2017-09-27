@@ -2,10 +2,10 @@ import router from '@/router'
 import authService from '@/services/auth'
 import {LOGIN_SUCCESS, LOGOUT_SUCCESS, LOGIN_OUT_FAIL, SIGNUP_FAIL} from '@/store/mutations/mutation-types'
 
-export const login = function ({dispatch}, creds, redirect) {
+export const login = function ({commit}, creds, redirect) {
   return authService.login()
     .then((user) => {
-      dispatch(LOGIN_SUCCESS, {
+      commit(LOGIN_SUCCESS, {
         email: user.email,
         balance: user.balance
       });
@@ -13,13 +13,13 @@ export const login = function ({dispatch}, creds, redirect) {
         router.push(redirect)
       }
     })
-    .catch((error) => dispatch(LOGIN_OUT_FAIL, error))
+    .catch((error) => commit(LOGIN_OUT_FAIL, error))
 };
 
-export const signup = function ({dispatch}, creds, redirect) {
+export const signup = function ({commit}, creds, redirect) {
   return authService.signup()
     .then((user) => {
-      dispatch(LOGIN_SUCCESS, {
+      commit(LOGIN_SUCCESS, {
         email: user.email,
         balance: user.balance
       });
@@ -27,22 +27,22 @@ export const signup = function ({dispatch}, creds, redirect) {
         router.push(redirect)
       }
     })
-    .catch((error) => dispatch(SIGNUP_FAIL, error))
+    .catch((error) => commit(SIGNUP_FAIL, error))
 };
 
-export const logout = function ({dispatch}, context) {
+export const logout = function ({commit}, context) {
   return authService.logout(context)
-    .then((response) => dispatch(LOGOUT_SUCCESS))
-    .catch((error) => dispatch(LOGIN_OUT_FAIL, error))
+    .then((response) => commit(LOGOUT_SUCCESS))
+    .catch((error) => commit(LOGIN_OUT_FAIL, error))
 };
 
-export const checkAuth = function ({dispatch}) {
+export const checkAuth = function ({commit}) {
   return authService.checkAuth()
     .then((response) => response.json())
     .then((user) =>
-      dispatch(LOGIN_SUCCESS, {
+      commit(LOGIN_SUCCESS, {
         email: user.email,
         balance: user.balance
       }))
-    .catch((error) => dispatch(LOGIN_OUT_FAIL, error))
+    .catch((error) => commit(LOGIN_OUT_FAIL, error))
 };
