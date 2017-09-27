@@ -13,9 +13,9 @@ export default {
     state.user.balance = 0
   },
   [LOGIN_OUT_FAIL](state, error) {
-    state.authError = error
+    state.error.auth = error
   },
   [SIGNUP_FAIL](state, error) {
-    state.signError = error
+    state.error.sign = error
   }
 }
