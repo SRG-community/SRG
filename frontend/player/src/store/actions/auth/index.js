@@ -3,7 +3,7 @@ import authService from '@/services/auth'
 import {LOGIN_SUCCESS, LOGOUT_SUCCESS, LOGIN_OUT_FAIL, SIGNUP_FAIL} from '@/store/mutations/mutation-types'
 
 export const login = function ({commit}, creds, redirect) {
-  return authService.login()
+  return authService.login(creds)
     .then((user) => {
       commit(LOGIN_SUCCESS, {
         email: user.email,
@@ -17,7 +17,7 @@ export const login = function ({commit}, creds, redirect) {
 };
 
 export const signup = function ({commit}, creds, redirect) {
-  return authService.signup()
+  return authService.signup(creds)
     .then((user) => {
       commit(LOGIN_SUCCESS, {
         email: user.email,
