@@ -30,8 +30,8 @@ export const signup = function ({commit}, creds, redirect) {
     .catch((error) => commit(SIGNUP_FAIL, error))
 };
 
-export const logout = function ({commit}, context) {
-  return authService.logout(context)
+export const logout = function ({commit}) {
+  return authService.logout()
     .then(() => {
       commit(LOGOUT_SUCCESS);
       router.push('SRG')
