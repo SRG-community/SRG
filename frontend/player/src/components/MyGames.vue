@@ -44,7 +44,7 @@
             </thead>
             <tbody style="display: none;"></tbody>
             <tbody>
-            <tr>
+            <tr v-if="isGamesEmpty">
               <td align="center" colspan="5">
                 <div>
                   <div aria-hidden="true"
@@ -60,6 +60,14 @@
                 </div>
               </td>
             </tr>
+            <tr v-else="isGamesEmpty" v-for="game in currentUser.games" :key="game.id" :id="`game-tab-${game.id}`">
+              <td><img :src="game.img"/></td>
+              <td>«{{game.name}}» | Balance: {{game.balance}} coins</td>
+              <td>
+                <button class="btn btn-warning"><a :href="game.link">Share link!</a>
+                </button>
+              </td>
+            </tr>
             </tbody>
             <tfoot aria-hidden="true" style="display: none;"></tfoot>
           </table>
@@ -71,6 +79,7 @@
 </template>
 
 <script>
+  import _ from 'lodash'
   import {mapGetters} from 'vuex'
 
   export default {
@@ -79,9 +88,14 @@
         quote: ''
       }
     },
-    computed: mapGetters([
-      'currentUser'
-    ]),
+    computed: {
+      ...mapGetters([
+        'currentUser'
+      ]),
+      isGamesEmpty() {
+        return _.isEmpty(this.currentUser.games)
+      }
+    },
     methods: {
       getQuote() {
         this.$http
