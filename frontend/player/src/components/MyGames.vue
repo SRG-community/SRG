@@ -3,10 +3,12 @@
     <div class="col-xs-12">
       <div class="col-sm-8 col-sm-offset-2">
         <h2>Share your games and Earn!!! </h2>
-        <button class="btn btn-warning"><a href="tg://msg?text=https://srgp.herokuapp.com?r=777 ПОИГРАЙ КА">Share via Telegram!</a>
-        </button>
-        <button class="btn btn-warning"><a href="whatsapp://send?text=https://srgp.herokuapp.com?r=777 ПОИГРАЙ КА">Share via Whatsapp!</a>
-        </button>
+        <a href="tg://msg?text=https://srgp.herokuapp.com?r=777 ПОИГРАЙ КА">
+          <button class="btn btn-warning">Share via Telegram!</button>
+        </a>
+        <a href="whatsapp://send?text=https://srgp.herokuapp.com?r=777 ПОИГРАЙ КА">
+          <button class="btn btn-warning">Share via Whatsapp!</button>
+        </a>
         <div class="quote-area" v-if="quote">
           <h2>
             <blockquote>{{ quote }}</blockquote>
@@ -64,8 +66,9 @@
               <td><img :src="game.img"/></td>
               <td>«{{game.name}}» | Balance: {{game.balance}} coins</td>
               <td>
-                <button class="btn btn-warning"><a :href="game.link">Share link!</a>
-                </button>
+                <a :href="game.link">
+                  <button class="btn btn-warning">Share link!</button>
+                </a>
               </td>
             </tr>
             </tbody>
