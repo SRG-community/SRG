@@ -63,7 +63,7 @@
               </td>
             </tr>
             <tr v-else="isGamesEmpty" v-for="game in currentUser.games" :key="game.id" :id="`game-tab-${game.id}`">
-              <td><img :src="game.img"/></td>
+              <td><img :src="game.img" height="135" width="135"/></td>
               <td>«{{game.name}}» | Balance: {{game.balance}} coins</td>
               <td>
                 <a :href="game.link">
