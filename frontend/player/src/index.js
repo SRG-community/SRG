@@ -3,7 +3,7 @@ import Resource from 'vue-resource'
 
 import router from '@/router'
 import store from '@/store'
-import App from '@/components/App.vue'
+import App from '@/views/App.vue'
 
 import '@/assets/css/bootstrap.min.css'
 import '@/assets/css/font-awesome-4.5.0.min.cache.css'
