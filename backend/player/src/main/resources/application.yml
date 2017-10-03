@@ -9,8 +9,8 @@ spring:
       appSecret: lll
     auto-connection-views: false
     google:
-      app-id: 97810384877-rmnqmai8qi5mpj4c6tk523sa6rsh8b3r.apps.googleusercontent.com
-      app-secret: JpMhx1uaBe8TvP3exdB-w4E6
+      app-id: ${GOOGLE_APP_ID}
+      app-secret: ${GOOGLE_APP_SECRET}
       scope: profile email
   h2:
     console:
