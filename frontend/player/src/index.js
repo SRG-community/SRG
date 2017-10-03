@@ -7,11 +7,11 @@ import './assets/css/bootstrap.min.css'
 import './assets/css/font-awesome-4.5.0.min.cache.css'
 import './assets/css/common.css'
 
-Vue.use(VueResource)
+Vue.use(VueResource);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-auth.checkAuth()
+auth.checkAuth();
 
 new Vue({
   el: '#app',
@@ -20,4 +20,4 @@ new Vue({
   components: {
     App
   }
-})
+});
