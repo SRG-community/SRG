@@ -114,7 +114,7 @@
           })
           .error((err) => console.log(err))
       },
-      authRoute() {
+      checkAuth() {
         if (!this.isAuthenticated)
           router.push({
               name: 'SRG'
@@ -126,24 +126,17 @@
       // Check the users auth status before
       // allowing navigation to the route
       canActivate() {
-        return this.currentUser.email !== null
+        return this.isAuthenticated
       }
     },
     created() {
-      if (!this.isAuthenticated)
-        router.push({
-            name: 'SRG'
-          }
-        )
-    },
-    created() {
-      this.authRoute()
+      this.checkAuth()
     },
     mounted() {
-      this.authRoute()
+      this.checkAuth()
     },
     updated() {
-      this.authRoute()
+      this.checkAuth()
     }
   }
 </script>

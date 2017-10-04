@@ -50,7 +50,7 @@
           })
           .error((err) => console.log(err))
       },
-      authRoute() {
+      checkAuth() {
         if (this.isAuthenticated)
           router.push({
               name: 'MyGames'
@@ -63,13 +63,13 @@
       slider
     },
     created() {
-      this.authRoute()
+      this.checkAuth()
     },
     mounted() {
-      this.authRoute()
+      this.checkAuth()
     },
     updated() {
-      this.authRoute()
+      this.checkAuth()
     }
   }
 </script>
