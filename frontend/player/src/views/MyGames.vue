@@ -84,6 +84,7 @@
 <script>
   import _ from 'lodash'
   import {mapGetters} from 'vuex'
+  import router from '@/router'
 
   export default {
     data() {
@@ -97,6 +98,9 @@
       ]),
       isGamesEmpty() {
         return _.isEmpty(this.currentUser.games)
+      },
+      isAuthenticated() {
+        return this.currentUser.email !== null;
       }
     },
     methods: {
@@ -117,6 +121,13 @@
       canActivate() {
         return this.currentUser.email !== null
       }
+    },
+    created() {
+      if (!this.isAuthenticated)
+        router.push({
+            name: 'SRG'
+          }
+        )
     }
   }
 </script>

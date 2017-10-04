@@ -24,6 +24,7 @@
 </template>
 
 <script>
+  import router from '@/router'
   import {mapGetters} from 'vuex'
   import {carousel, slider} from 'vue-strap'
 
@@ -33,9 +34,14 @@
         quote: ''
       }
     },
-    computed: mapGetters([
-      'currentUser'
-    ]),
+    computed: {
+      ...mapGetters([
+        'currentUser'
+      ]),
+      isAuthenticated() {
+        return this.currentUser.email !== null;
+      }
+    },
     methods: {
       getQuote() {
         this.$http
@@ -48,6 +54,13 @@
     components: {
       carousel,
       slider
+    },
+    created() {
+      if (this.isAuthenticated)
+        router.push({
+            name: 'MyGames'
+          }
+        )
     }
   }
 </script>
