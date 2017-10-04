@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './../components/Home.vue'
-import MyGames from '@/components/MyGames.vue'
-import Signup from '@/components/Signup.vue'
-import Login from '@/components/Login.vue'
 
-Vue.use(Router)
+import Home from '@/views/Home.vue'
+import MyGames from '@/views/MyGames.vue'
+import Signup from '@/views/Signup.vue'
+import Login from '@/views/Login.vue'
+
+Vue.use(Router);
 
 export default new Router({
   routes: [
