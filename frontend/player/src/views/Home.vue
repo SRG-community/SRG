@@ -64,12 +64,6 @@
     },
     created() {
       this.checkAuth()
-    },
-    mounted() {
-      this.checkAuth()
-    },
-    updated() {
-      this.checkAuth()
     }
   }
 </script>
