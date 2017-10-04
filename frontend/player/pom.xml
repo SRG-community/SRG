@@ -70,6 +70,7 @@
                                 <copy file="${project.build.outputDirectory}/web/favico.ico"
                                       tofile="${project.build.outputDirectory}/web/favicon.ico"/>
                             </target>
+                            <failOnError>false</failOnError>
                         </configuration>
                     </execution>
                 </executions>
