@@ -5,8 +5,8 @@ spring:
     url: jdbc:h2:~/srg
   social:
     twitter:
-      appId: ${TWITTER_APP_ID}
-      appSecret: ${TWITTER_APP_SECRET}
+      appId: ${TWITTER_APP_ID:1}
+      appSecret: ${TWITTER_APP_SECRET:2}
     auto-connection-views: false
     google:
       app-id: ${GOOGLE_APP_ID}
