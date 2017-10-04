@@ -42,10 +42,16 @@ export const logout = function ({commit}) {
 export const checkAuth = function ({commit}) {
   authService.checkAuth()
     .then((response) => response.json())
-    .then((user) =>
-      commit(LOGIN_SUCCESS, {
-        email: user.email,
-        balance: user.balance
-      }))
-    .catch((error) => commit(LOGIN_OUT_FAIL, error))
+    .then((user) => {
+        commit(LOGIN_SUCCESS, {
+          email: user.email,
+          balance: user.balance
+        });
+        router.push({name: 'MyGames'})
+      }
+    )
+    .catch((error) => {
+      commit(LOGIN_OUT_FAIL, error);
+      router.push({name: 'SRG'})
+    })
 };

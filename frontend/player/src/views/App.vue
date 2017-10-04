@@ -38,15 +38,26 @@
     computed: mapGetters([
       'currentUser'
     ]),
-    methods: mapActions([
-      'logout'
-    ]),
+    methods: {
+      ...mapActions([
+        'logout'
+      ]),
+      checkAuth() {
+        this.$store.dispatch('checkAuth');
+      }
+    },
     components: {
       navbar,
       dropdown
     },
     created() {
-      this.$store.dispatch('checkAuth');
+      this.checkAuth();
+    },
+    mounted() {
+      this.checkAuth();
+    },
+    updated() {
+      this.checkAuth();
     }
   }
 </script>
