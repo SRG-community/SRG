@@ -49,6 +49,13 @@
             this.quote = data;
           })
           .error((err) => console.log(err))
+      },
+      authRoute() {
+        if (this.isAuthenticated)
+          router.push({
+              name: 'MyGames'
+            }
+          )
       }
     },
     components: {
@@ -56,11 +63,13 @@
       slider
     },
     created() {
-      if (this.isAuthenticated)
-        router.push({
-            name: 'MyGames'
-          }
-        )
+      this.authRoute()
+    },
+    mounted() {
+      this.authRoute()
+    },
+    updated() {
+      this.authRoute()
     }
   }
 </script>

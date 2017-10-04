@@ -113,6 +113,13 @@
             headers: ''
           })
           .error((err) => console.log(err))
+      },
+      authRoute() {
+        if (!this.isAuthenticated)
+          router.push({
+              name: 'SRG'
+            }
+          )
       }
     },
     route: {
@@ -128,6 +135,15 @@
             name: 'SRG'
           }
         )
+    },
+    created() {
+      this.authRoute()
+    },
+    mounted() {
+      this.authRoute()
+    },
+    updated() {
+      this.authRoute()
     }
   }
 </script>
