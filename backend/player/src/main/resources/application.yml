@@ -2,11 +2,11 @@ server:
   port: ${PORT:9999}
 spring:
   datasource:
-    url: jdbc:h2:~/social-test
+    url: jdbc:h2:~/srg
   social:
     twitter:
-      appId: 222
-      appSecret: lll
+      appId: ${TWITTER_APP_ID:1}
+      appSecret: ${TWITTER_APP_SECRET:2}
     auto-connection-views: false
     google:
       app-id: 97810384877-rmnqmai8qi5mpj4c6tk523sa6rsh8b3r.apps.googleusercontent.com
@@ -24,6 +24,9 @@ spring:
       base-path: /api
   resources:
     staticLocations: classpath:web/
+  mvc:
+    favicon:
+        enabled: false
 security:
   basic:
     enabled: false

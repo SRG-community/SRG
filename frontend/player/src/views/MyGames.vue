@@ -2,11 +2,13 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="col-sm-8 col-sm-offset-2">
-        <h2>Hi, {{ name }}! Share your games and Earn!!! Your balance is {{ balance }} coins</h2>
-        <button class="btn btn-warning"><a href="tg://msg?text=https://srgp.herokuapp.com?r=777 ПОИГРАЙ КА">Share via Telegram!</a>
-        </button>
-        <button class="btn btn-warning"><a href="whatsapp://send?text=https://srgp.herokuapp.com?r=777 ПОИГРАЙ КА">Share via Whatsapp!</a>
-        </button>
+        <h2>Share your games and Earn!!! </h2>
+        <a href="tg://msg?text=https://srgp.herokuapp.com?r=777 ПОИГРАЙ КА">
+          <button class="btn btn-warning">Share via Telegram!</button>
+        </a>
+        <a href="whatsapp://send?text=https://srgp.herokuapp.com?r=777 ПОИГРАЙ КА">
+          <button class="btn btn-warning">Share via Whatsapp!</button>
+        </a>
         <div class="quote-area" v-if="quote">
           <h2>
             <blockquote>{{ quote }}</blockquote>
@@ -44,7 +46,7 @@
             </thead>
             <tbody style="display: none;"></tbody>
             <tbody>
-            <tr>
+            <tr v-if="isGamesEmpty">
               <td align="center" colspan="5">
                 <div>
                   <div aria-hidden="true"
@@ -60,6 +62,15 @@
                 </div>
               </td>
             </tr>
+            <tr v-else="isGamesEmpty" v-for="game in currentUser.games" :key="game.id" :id="`game-tab-${game.id}`">
+              <td><img :src="game.img" height="135" width="135"/></td>
+              <td>«{{game.name}}» | Balance: {{game.balance}} coins</td>
+              <td>
+                <a :href="game.link">
+                  <button class="btn btn-warning">Share link!</button>
+                </a>
+              </td>
+            </tr>
             </tbody>
             <tfoot aria-hidden="true" style="display: none;"></tfoot>
           </table>
@@ -71,14 +82,25 @@
 </template>
 
 <script>
-  import auth from '../auth'
+  import _ from 'lodash'
+  import {mapGetters} from 'vuex'
+  import router from '@/router'
 
   export default {
     data() {
       return {
-        quote: '',
-        name: auth.user.email,
-        balance: auth.user.balance
+        quote: ''
+      }
+    },
+    computed: {
+      ...mapGetters([
+        'currentUser'
+      ]),
+      isGamesEmpty() {
+        return _.isEmpty(this.currentUser.games)
+      },
+      isAuthenticated() {
+        return this.currentUser.email !== null;
       }
     },
     methods: {
@@ -88,17 +110,27 @@
             this.quote = data;
           }, {
             // Attach the JWT header
-            headers: auth.getAuthHeader()
+            headers: ''
           })
           .error((err) => console.log(err))
+      },
+      checkAuth() {
+        if (!this.isAuthenticated)
+          router.push({
+              name: 'SRG'
+            }
+          )
       }
     },
     route: {
       // Check the users auth status before
       // allowing navigation to the route
       canActivate() {
-        return auth.user.email != null
+        return this.isAuthenticated
       }
+    },
+    created() {
+      this.checkAuth()
     }
   }
 </script>
