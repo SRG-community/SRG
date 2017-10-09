@@ -49,9 +49,6 @@
     components: {
       navbar,
       dropdown
-    },
-    created() {
-      this.checkAuth();
     }
   }
 </script>

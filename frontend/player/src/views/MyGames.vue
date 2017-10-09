@@ -129,7 +129,7 @@
         return this.isAuthenticated
       }
     },
-    created() {
+    beforeCreate() {
       this.checkAuth()
     }
   }
