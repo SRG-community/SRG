@@ -8,7 +8,7 @@ import org.springframework.social.connect.web.SignInAdapter;
 import ru.srg.security.util.SocialAuthUtil;
 
 @Configuration
-public class SocialConfiguration {
+public class SocialConfig {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
