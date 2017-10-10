@@ -62,7 +62,7 @@
       carousel,
       slider
     },
-    beforeCreate() {
+    created() {
       this.checkAuth()
     }
   }
